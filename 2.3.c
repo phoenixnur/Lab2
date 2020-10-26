@@ -5,27 +5,27 @@
 #include <unistd.h>
 
 void childTask() {
-	printf("Salam, saya anak tau\n");
+        printf("Salam, saya anak tau\n");
 }
 
 void parentTask() {
-	printf("Dan saya adalah bapaknya\n");
+        printf("Dan saya adalah bapaknya\n");
 }
 
 int main(void) {
 
-	 pid_t pid = fork();
+         pid_t pid = fork();
 
          if (pid == 0) {
-        	childTask();
-		exit(EXIT_SUCCESS);
-	}
-	else if(pid > 0) {
-		wait(NULL);
-		parentTask();
+                childTask();
+                exit(EXIT_SUCCESS);
         }
-	else {
-		printf("Unable to create child process.");
-	}
+        else if(pid > 0) {
+                wait(NULL);
+                parentTask();
+        }
+        else {
+                printf("Unable to create child process.");
+        }
         return EXIT_SUCCESS;
 }
